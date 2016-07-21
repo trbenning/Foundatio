@@ -11,7 +11,7 @@ using Foundatio.Utility;
 namespace Foundatio.Queues {
     public abstract class QueueBase<T> : MaintenanceBase, IQueue<T> where T : class {
         protected string _queueName = typeof(T).Name;
-        protected readonly ISerializer _serializer;
+        protected ISerializer _serializer;
         protected readonly List<IQueueBehavior<T>> _behaviors = new List<IQueueBehavior<T>>();
 
         protected QueueBase(ISerializer serializer, IEnumerable<IQueueBehavior<T>> behaviors, ILoggerFactory loggerFactory = null) : base(loggerFactory) {
